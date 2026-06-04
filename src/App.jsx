@@ -8,7 +8,7 @@ import Installments from './Components/Installments';
 import Users from './Components/Users';
 import Auth from './Components/Auth';
 
-const API_BASE = 'http://localhost:5000/api/admin';
+const API_BASE = 'https://novaride-backend-staging.onrender.com/api/admin';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || null);

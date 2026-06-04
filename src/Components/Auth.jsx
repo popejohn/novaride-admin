@@ -40,7 +40,7 @@ const Auth = ({ onAuthSuccess }) => {
       : { firstname, lastname, email, password, role };
 
     try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`https://novaride-backend-staging.onrender.com${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

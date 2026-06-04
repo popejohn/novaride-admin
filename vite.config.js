@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/admin': {
-        target: 'http://localhost:5000',
+        target: 'https://novaride-backend-staging.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/admin/, '/api/admin')
       }

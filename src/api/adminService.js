@@ -1,5 +1,5 @@
 // Admin API Service - centralized API calls to backend on port 5000
-const API_BASE_URL = 'http://localhost:5000/api/admin';
+const API_BASE_URL = 'https://novaride-backend-staging.onrender.com/api/admin';
 
 /**
  * Make authenticated API requests to the admin backend

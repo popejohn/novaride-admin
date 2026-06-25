@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     if (token && admin) {
       fetchAllData();
-      
+
       const interval = setInterval(() => {
         fetchStatsSilently();
       }, 15000); // refresh aggregates every 15s
@@ -98,7 +98,7 @@ function App() {
       if (res.ok) {
         setStats(data);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const fetchRides = async () => {
@@ -140,7 +140,7 @@ function App() {
   const fetchUsers = async () => {
     try {
       const headers = { 'Authorization': `Bearer ${token}` };
-      
+
       const [passengersRes, ridersRes] = await Promise.all([
         fetch(`${API_BASE}/dashboard/passengers`, { headers }),
         fetch(`${API_BASE}/dashboard/riders`, { headers })
@@ -214,50 +214,50 @@ function App() {
   return (
     <div className="app-layout">
       {sidebarOpen && (
-        <div 
-          className="sidebar-overlay active" 
+        <div
+          className="sidebar-overlay active"
           onClick={() => setSidebarOpen(false)}
         />
       )}
-      
-      <Sidebar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        admin={admin} 
+
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        admin={admin}
         handleLogout={handleLogout}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
-      
+
       <div className="main-content">
-        <Header 
-          activeTab={activeTab} 
+        <Header
+          activeTab={activeTab}
           admin={admin}
           onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
         />
-        
+
         {activeTab === 'dashboard' && <DashboardHome stats={stats} />}
         {activeTab === 'rides' && <RideUpdates rides={rides} onRefresh={fetchRides} />}
         {activeTab === 'wallet' && (
-          <WalletUpdates 
-            logs={walletLogs} 
+          <WalletUpdates
+            logs={walletLogs}
             riders={riders}
-            onRefresh={fetchWalletLogs} 
+            onRefresh={fetchWalletLogs}
             token={token}
           />
         )}
         {activeTab === 'installments' && (
-          <Installments 
-            installments={installments} 
-            onRefresh={fetchInstallments} 
+          <Installments
+            installments={installments}
+            onRefresh={fetchInstallments}
           />
         )}
         {activeTab === 'users' && (
-          <Users 
-            passengers={passengers} 
-            riders={riders} 
-            partners={installments} 
-            onRefresh={fetchAllData} 
+          <Users
+            passengers={passengers}
+            riders={riders}
+            partners={installments}
+            onRefresh={fetchAllData}
           />
         )}
         {activeTab === 'chats' && (

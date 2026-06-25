@@ -7,8 +7,11 @@ import WalletUpdates from './Components/WalletUpdates';
 import Installments from './Components/Installments';
 import Users from './Components/Users';
 import Auth from './Components/Auth';
+import AdminChats from './Components/AdminChats';
 
-const API_BASE = 'https://novaride-backend-staging.onrender.com/api/admin';
+const API_BASE = import.meta.env.VITE_API_URL
+  ? (import.meta.env.VITE_API_URL.endsWith('/api') ? `${import.meta.env.VITE_API_URL}/admin` : `${import.meta.env.VITE_API_URL}/api/admin`)
+  : 'https://novaride-backend-staging.onrender.com/api/admin';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || null);
@@ -256,6 +259,9 @@ function App() {
             partners={installments} 
             onRefresh={fetchAllData} 
           />
+        )}
+        {activeTab === 'chats' && (
+          <AdminChats token={token} admin={admin} />
         )}
       </div>
     </div>
